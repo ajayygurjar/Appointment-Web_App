@@ -64,37 +64,89 @@
 //Step:-4 Having Delete Functionality
 
 // Write your code below:
+// function handleFormSubmit(event) {
+//     event.preventDefault();
+//     const username = event.target.username.value;
+//     const email = event.target.email.value;
+//     const phone = event.target.phone.value;
+  
+//     const obj = {
+//       username, 
+//       email,
+//       phone
+//     }
+//     localStorage.setItem(obj.email, JSON.stringify(obj));
+//     displayUser(obj)
+//   } 
+  
+//   function displayUser(obj) {
+//     const parentElement = document.getElementById('listOfItems')
+//     const childElement = document.createElement('li')
+//     childElement.textContent = obj.username + " - " + obj.email + " - " + obj.phone
+    
+//     const delBtn = document.createElement('input');
+//     delBtn.type = 'button'
+//     delBtn.value = 'Delete'
+  
+//    delBtn.onclick = () => {
+//      localStorage.removeItem(obj.email);
+//       parentElement.removeChild(childElement)
+//    }
+//     childElement.appendChild(delBtn);
+//     parentElement.appendChild(childElement);
+    
+//   }
+  
+//   module.exports = handleFormSubmit
+
+
+//Step:-5 Having Edit Functionality
+
+// Write your code below:
+const form = document.querySelector('form');
 function handleFormSubmit(event) {
-    event.preventDefault();
-    const username = event.target.username.value;
-    const email = event.target.email.value;
-    const phone = event.target.phone.value;
-  
-    const obj = {
-      username, 
-      email,
-      phone
-    }
-    localStorage.setItem(obj.email, JSON.stringify(obj));
-    displayUser(obj)
-  } 
-  
-  function displayUser(obj) {
-    const parentElement = document.getElementById('listOfItems')
-    const childElement = document.createElement('li')
-    childElement.textContent = obj.username + " - " + obj.email + " - " + obj.phone
-    
-    const delBtn = document.createElement('input');
-    delBtn.type = 'button'
-    delBtn.value = 'Delete'
-  
-   delBtn.onclick = () => {
-     localStorage.removeItem(obj.email);
-      parentElement.removeChild(childElement)
-   }
-    childElement.appendChild(delBtn);
-    parentElement.appendChild(childElement);
-    
+  event.preventDefault();
+  const username = event.target.username.value;
+  const email = event.target.email.value;
+  const phone = event.target.phone.value;
+
+  const obj = {
+    username,
+    email,
+    phone
   }
+  localStorage.setItem(obj.email, JSON.stringify(obj));
+  displayUser(obj);
+}
+
+function displayUser(obj) {
+  const ul = document.getElementById("listOfItems");
+  const li = document.createElement('li');
+  li.textContent = obj.username + " - " + obj.email + " - " + obj.phone;
+
+  const delBtn = document.createElement('button');
+  delBtn.textContent = 'Delete';
+  delBtn.addEventListener('click', delFun);
   
-  module.exports = handleFormSubmit
+  function delFun() {
+    ul.removeChild(li);
+    localStorage.removeItem(obj.email);
+  }
+  const editBtn = document.createElement('button');
+  editBtn.textContent = "Edit";
+
+  editBtn.addEventListener('click', editFun);
+
+  function editFun() {
+    ul.removeChild(li);
+    localStorage.removeItem(obj.email);
+
+    document.getElementById('username').value = obj.username;
+    document.getElementById('email').value = obj.email;
+    document.getElementById('phone').value = obj.phone;
+  }
+  li.appendChild(delBtn);
+  li.appendChild(editBtn);
+  ul.appendChild(li);
+}
+module.exports = handleFormSubmit;
