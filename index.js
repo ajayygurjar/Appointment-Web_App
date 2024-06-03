@@ -38,25 +38,63 @@
 
 
 // Write your code below:
-function handleFormSubmit(event){
-    event.preventDefault();
-    const Username=event.target.username.value;
-    const Email=event.target.email.value;
-    const Phone=event.target.phone.value;
-    const userDetail={
-      username:Username,
-      email:Email,
-      phone:Phone
-    }
+// function handleFormSubmit(event){
+//     event.preventDefault();
+//     const Username=event.target.username.value;
+//     const Email=event.target.email.value;
+//     const Phone=event.target.phone.value;
+//     const userDetail={
+//       username:Username,
+//       email:Email,
+//       phone:Phone
+//     }
     
-    localStorage.setItem(Email,JSON.stringify(userDetail));
-    showOnScreen(userDetail);
-  }
-  module.exports=handleFormSubmit;
-  function showOnScreen(userDetail){
-    const parentElem=document.getElementById('listItem');
-    const childElem=document.createElement('li')
-    childElem.textContent=userDetail.username +'-'+ userDetail.email + '-'+ userDetail.phone
-    parentElem.appendChild(childElem);
+//     localStorage.setItem(Email,JSON.stringify(userDetail));
+//     showOnScreen(userDetail);
+//   }
+//   module.exports=handleFormSubmit;
+//   function showOnScreen(userDetail){
+//     const parentElem=document.getElementById('listItem');
+//     const childElem=document.createElement('li')
+//     childElem.textContent=userDetail.username +'-'+ userDetail.email + '-'+ userDetail.phone
+//     parentElem.appendChild(childElem);
+//   }
+  
+
+//Step:-4 Having Delete Functionality
+
+// Write your code below:
+function handleFormSubmit(event) {
+    event.preventDefault();
+    const username = event.target.username.value;
+    const email = event.target.email.value;
+    const phone = event.target.phone.value;
+  
+    const obj = {
+      username, 
+      email,
+      phone
+    }
+    localStorage.setItem(obj.email, JSON.stringify(obj));
+    displayUser(obj)
+  } 
+  
+  function displayUser(obj) {
+    const parentElement = document.getElementById('listOfItems')
+    const childElement = document.createElement('li')
+    childElement.textContent = obj.username + " - " + obj.email + " - " + obj.phone
+    
+    const delBtn = document.createElement('input');
+    delBtn.type = 'button'
+    delBtn.value = 'Delete'
+  
+   delBtn.onclick = () => {
+     localStorage.removeItem(obj.email);
+      parentElement.removeChild(childElement)
+   }
+    childElement.appendChild(delBtn);
+    parentElement.appendChild(childElement);
+    
   }
   
+  module.exports = handleFormSubmit
