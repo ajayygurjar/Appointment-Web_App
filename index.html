@@ -5,7 +5,117 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Appointment</title>
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f4f4;
+    padding: 2rem;
+  }
+
+  form {
+    background-color: #fff;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  form input {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  form button:hover {
+    background-color: #0056b3;
+  }
+
+  #listOfItems {
+    max-width: 500px;
+    margin: 2rem auto;
+    list-style: none;
+    padding: 0;
+  }
+
+  #listOfItems li {
+    background-color: #ffffff;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-left: 5px solid #007bff;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  #listOfItems button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    margin-left: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #listOfItems button:hover {
+    background-color: #c82333;
+  }
+
+  #listOfItems button:nth-child(3) {
+    background-color: #ffc107;
+    color: #000;
+  }
+
+  #listOfItems button:nth-child(3):hover {
+    background-color: #e0a800;
+  }
+
+  @media (max-width: 600px) {
+    form,
+    #listOfItems {
+      margin: 1rem;
+    }
+
+    #listOfItems li {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    #listOfItems button {
+      margin-top: 0.5rem;
+    }
+  }
+</style>
 </head>
 
 <body style="margin: 0">
